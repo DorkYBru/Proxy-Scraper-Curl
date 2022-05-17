@@ -92,10 +92,10 @@ https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000
 '''
 
 
-file = open('proxies.txt', 'w')
-file.write('Proxies:\n')
-file.close()
-file = open('proxies.txt', 'a')
+#file = open('proxies.txt', 'w')
+#file.write('Proxies:\n')
+#file.close()
+#file = open('proxies.txt', 'a')
 good_proxies = list()
 
 
@@ -104,7 +104,7 @@ def pattern_one(url):
     if not ip_port: pattern_two(url)
     else:
         for i in ip_port:
-            file.write(str(i) + '\n')
+            print(str(i) + '\n')
             good_proxies.append(i)
 
 
@@ -114,7 +114,7 @@ def pattern_two(url):
     if not ip or not port: pattern_three(url)
     else:
         for i in range(len(ip)):
-            file.write(str(ip[i]) + ':' + str(port[i]) + '\n')
+            print(str(ip[i]) + ':' + str(port[i]) + '\n')
             good_proxies.append(str(ip[i]) + ':' + str(port[i]))
 
 
@@ -124,7 +124,7 @@ def pattern_three(url):
     if not ip or not port: pattern_four(url)
     else:
         for i in range(len(ip)):
-            file.write(str(ip[i]) + ':' + str(port[i]) + '\n')
+            print(str(ip[i]) + ':' + str(port[i]) + '\n')
             good_proxies.append(str(ip[i]) + ':' + str(port[i]))
 
 
@@ -134,7 +134,7 @@ def pattern_four(url):
     if not ip or not port: pattern_five(url)
     else:
         for i in range(len(ip)):
-            file.write(str(ip[i]) + ':' + str(port[i]) + '\n')
+            print(str(ip[i]) + ':' + str(port[i]) + '\n')
             good_proxies.append(str(ip[i]) + ':' + str(port[i]))
 
 
@@ -142,7 +142,7 @@ def pattern_five(url):
     ip = re.findall('(\d{,3}\.\d{,3}\.\d{,3}\.\d{,3})', url)
     port = re.findall('(\d{2,5})', url)
     for i in range(len(ip)):
-        file.write(str(ip[i]) + ':' + str(port[i]) + '\n')
+        print(str(ip[i]) + ':' + str(port[i]) + '\n')
         good_proxies.append(str(ip[i]) + ':' + str(port[i]))
 
 
